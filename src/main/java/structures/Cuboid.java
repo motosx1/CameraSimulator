@@ -1,5 +1,6 @@
 package structures;
 
+import algorithms.DisplayAlgorithms;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -12,9 +13,9 @@ public class Cuboid {
     @Getter
     private final Map<Integer, Point3D> points3D = new HashMap<Integer, Point3D>();
     @Getter
-    private Map<Integer, Point2D> points2D = null;
+    private Map<Integer, Point2D> points2D = new HashMap<Integer, Point2D>();
     @Getter
-    private List<LineWrapper> lines = null;
+    private List<LineWrapper> lines = new ArrayList<LineWrapper>();
     @Getter
     private static final double INITIAL_VIEWER_DISTANCE = 600;
 
@@ -24,10 +25,10 @@ public class Cuboid {
         points3D.put( 1, new Point3D(500, 200, 100) );
         points3D.put( 2, new Point3D(500, 200, 300) );
         points3D.put( 3, new Point3D(300, 200, 300) );
-        points3D.put( 4, new Point3D(300, 200+150, 100) );
-        points3D.put( 5, new Point3D(500, 200+150, 100) );
-        points3D.put( 6, new Point3D(500, 200+150, 300) );
-        points3D.put( 7, new Point3D(300, 200+150, 300) );
+        points3D.put( 4, new Point3D(300, 350, 100) );
+        points3D.put( 5, new Point3D(500, 350, 100) );
+        points3D.put( 6, new Point3D(500, 350, 300) );
+        points3D.put( 7, new Point3D(300, 350, 300) );
 
         points2D = getTransformedPointsTo2D();
         lines = getLinesWrapper();
@@ -36,24 +37,14 @@ public class Cuboid {
     private Map<Integer, Point2D> getTransformedPointsTo2D(){
         Map<Integer, Point2D> transformedPoints = new HashMap<Integer, Point2D>();
 
-        for (Map.Entry<Integer, Point3D> cuboidPoint : points3D.entrySet())
-        {
+        for (Map.Entry<Integer, Point3D> cuboidPoint : points3D.entrySet()){
             Integer id = cuboidPoint.getKey();
-            double x = cuboidPoint.getValue().getX();
-            double y = cuboidPoint.getValue().getY();
-            double z = cuboidPoint.getValue().getZ();
+            Point2D transformedPoint = DisplayAlgorithms.transformPointTo2D(cuboidPoint.getValue(), INITIAL_VIEWER_DISTANCE);
 
-            transformedPoints.put(id, transformPointTo2D(x,y,z,INITIAL_VIEWER_DISTANCE));
+            transformedPoints.put(id, transformedPoint);
         }
 
         return transformedPoints;
-    }
-
-    private Point2D transformPointTo2D(double x, double y, double z, double d) {
-        double newX = (x * d)/(z + d);
-        double newY = (y * d)/(z + d);
-
-        return new Point2D(newX, newY);
     }
 
     private List<LineWrapper> getLinesWrapper(){
