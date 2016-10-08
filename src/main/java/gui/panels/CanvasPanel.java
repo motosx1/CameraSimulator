@@ -11,17 +11,12 @@ import java.util.Map;
 
 public class CanvasPanel extends JPanel {
 
-    transient Cuboid cuboid = new Cuboid();
+    transient Cuboid cuboid = null;
 
-    public CanvasPanel(int width, int height) {
+    public CanvasPanel(Cuboid cuboid) {
         super();
-        setPreferredSize(new Dimension(width,height));
+        this.cuboid = cuboid;
         setBackground(Color.WHITE);
-
-        drawRect();
-    }
-
-    private void drawRect() {
         repaint();
     }
 
@@ -46,7 +41,7 @@ public class CanvasPanel extends JPanel {
 
     private void setCanvasCenter(Graphics2D g2) {
         AffineTransform tx = new AffineTransform();
-        tx.translate(MainFrame.FRAME_WIDTH/(double)2,MainFrame.FRAME_HEIGHT/(double)3);
+        tx.translate(MainFrame.getCanvasPanelSize().getWidth()/(double)2,MainFrame.getCanvasPanelSize().getHeight()/(double)3);
         g2.setTransform(tx);
     }
 

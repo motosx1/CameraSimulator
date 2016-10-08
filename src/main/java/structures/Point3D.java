@@ -12,4 +12,13 @@ public class Point3D extends Point2D {
         super(x, y);
         this.z = z;
     }
+
+    @Override
+    public String toString() {
+        return "Point3D{" +
+                "x=" + getX() +
+                "y=" + getY() +
+                "z=" + z +
+                '}';
+    }
 }

@@ -11,7 +11,7 @@ import java.util.Map;
 public class Cuboid {
 
     @Getter
-    private final Map<Integer, Point3D> points3D = new HashMap<Integer, Point3D>();
+    private Map<Integer, Point3D> points3D = new HashMap<Integer, Point3D>();
     @Getter
     private Map<Integer, Point2D> points2D = new HashMap<Integer, Point2D>();
     @Getter
@@ -65,4 +65,9 @@ public class Cuboid {
         return tmpLines;
     }
 
+    public void setPoints3D(Map<Integer, Point3D> points3D) {
+        this.points3D = points3D;
+        points2D = getTransformedPointsTo2D();
+        lines = getLinesWrapper();
+    }
 }
