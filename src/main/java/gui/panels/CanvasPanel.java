@@ -1,11 +1,11 @@
 package gui.panels;
 
 import structures.Cuboid;
-import structures.Point2DWrapper;
+import structures.Point2D;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.List;
+import java.util.Map;
 
 public class CanvasPanel extends JPanel {
 
@@ -28,12 +28,11 @@ public class CanvasPanel extends JPanel {
         super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
 
-        List<Point2DWrapper> points = cuboid.getTransformedPointsTo2D();
+        Map<Integer, Point2D> cuboidPoints = cuboid.getTransformedPointsTo2D();
 
-        for (Point2DWrapper point : points) {
-            g2.drawOval((int)point.getX(), (int)point.getY(), 5,5);
+        for (Map.Entry<Integer, Point2D> point : cuboidPoints.entrySet()) {
+            g2.drawOval((int)point.getValue().getX(), (int)point.getValue().getY(), 5,5);
         }
-
     }
 
 }

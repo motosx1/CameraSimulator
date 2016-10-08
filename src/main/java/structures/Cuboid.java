@@ -2,49 +2,50 @@ package structures;
 
 import lombok.Getter;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Cuboid {
 
     @Getter
-    private final ArrayList<Point3DWrapper> points = new ArrayList<Point3DWrapper>();
+    private final Map<Integer, Point3D> points = new HashMap<Integer, Point3D>();
     @Getter
     private static final double INITIAL_VIEWER_DISTANCE = 600;
 
 
     public Cuboid(){
-        points.add( new Point3DWrapper(0, 300, 0, 100) );
-        points.add( new Point3DWrapper(1, 500, 0, 100) );
-        points.add( new Point3DWrapper(2, 500, 0, 300) );
-        points.add( new Point3DWrapper(3, 300, 0, 300) );
-        points.add( new Point3DWrapper(4, 300, 150, 100) );
-        points.add( new Point3DWrapper(5, 500, 150, 100) );
-        points.add( new Point3DWrapper(6, 500, 150, 300) );
-        points.add( new Point3DWrapper(7, 300, 150, 300) );
+        points.put( 0, new Point3D(300, 0, 100) );
+        points.put( 1, new Point3D(500, 0, 100) );
+        points.put( 2, new Point3D(500, 0, 300) );
+        points.put( 3, new Point3D(300, 0, 300) );
+        points.put( 4, new Point3D(300, 150, 100) );
+        points.put( 5, new Point3D(500, 150, 100) );
+        points.put( 6, new Point3D(500, 150, 300) );
+        points.put( 7, new Point3D(300, 150, 300) );
     }
 
-    public List<Point2DWrapper> getTransformedPointsTo2D(){
-        ArrayList<Point2DWrapper> transformedPoints = new ArrayList<Point2DWrapper>();
-        ArrayList<Point3DWrapper> cuboidPoints = getPoints();
+    public Map<Integer, Point2D> getTransformedPointsTo2D(){
+        Map<Integer, Point2D> transformedPoints = new HashMap<Integer, Point2D>();
+        Map<Integer, Point3D> points3D = getPoints();
 
-        for (Point3DWrapper cuboidPoint : cuboidPoints) {
-            double id = cuboidPoint.getId();
-            double x = cuboidPoint.getX();
-            double y = cuboidPoint.getY();
-            double z = cuboidPoint.getZ();
+        for (Map.Entry<Integer, Point3D> cuboidPoint : points3D.entrySet())
+        {
+            Integer id = cuboidPoint.getKey();
+            double x = cuboidPoint.getValue().getX();
+            double y = cuboidPoint.getValue().getY();
+            double z = cuboidPoint.getValue().getZ();
 
-            transformedPoints.add(transformPointTo2D(id,x,y,z,INITIAL_VIEWER_DISTANCE));
+            transformedPoints.put(id, transformPointTo2D(x,y,z,INITIAL_VIEWER_DISTANCE));
         }
 
         return transformedPoints;
     }
 
-    private Point2DWrapper transformPointTo2D(double id, double x, double y, double z, double d) {
+    private Point2D transformPointTo2D(double x, double y, double z, double d) {
         double newX = (x * d)/(z + d);
         double newY = (y * d)/(z + d);
 
-        return new Point2DWrapper(id, newX, newY);
+        return new Point2D(newX, newY);
     }
 
 }

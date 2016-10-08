@@ -3,10 +3,8 @@ package structures;
 import lombok.Data;
 
 @Data
-public class Point3DWrapper {
-    private final double id;
+public class Point2D {
     private final double x;
     private final double y;
-    private final double z;
 
 }
