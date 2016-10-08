@@ -1,10 +1,10 @@
 package gui.panels;
 
 import structures.Cuboid;
+import structures.Point2DWrapper;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.Point2D;
 import java.util.List;
 
 public class CanvasPanel extends JPanel {
@@ -28,9 +28,9 @@ public class CanvasPanel extends JPanel {
         super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
 
-        List<Point2D.Double> points = cuboid.getTransformedPointsTo2D();
+        List<Point2DWrapper> points = cuboid.getTransformedPointsTo2D();
 
-        for (Point2D.Double point : points) {
+        for (Point2DWrapper point : points) {
             g2.drawOval((int)point.getX(), (int)point.getY(), 5,5);
         }
 

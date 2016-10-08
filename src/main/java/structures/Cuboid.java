@@ -2,7 +2,6 @@ package structures;
 
 import lombok.Getter;
 
-import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,27 +24,27 @@ public class Cuboid {
         points.add( new Point3DWrapper(7, 300, 150, 300) );
     }
 
-    public List<Point2D.Double> getTransformedPointsTo2D(){
-        ArrayList<Point2D.Double> transformedPoints = new ArrayList<Point2D.Double>();
-
+    public List<Point2DWrapper> getTransformedPointsTo2D(){
+        ArrayList<Point2DWrapper> transformedPoints = new ArrayList<Point2DWrapper>();
         ArrayList<Point3DWrapper> cuboidPoints = getPoints();
 
         for (Point3DWrapper cuboidPoint : cuboidPoints) {
+            double id = cuboidPoint.getId();
             double x = cuboidPoint.getX();
             double y = cuboidPoint.getY();
             double z = cuboidPoint.getZ();
 
-            transformedPoints.add(transformPointTo2D(x,y,z,1000));
+            transformedPoints.add(transformPointTo2D(id,x,y,z,INITIAL_VIEWER_DISTANCE));
         }
 
         return transformedPoints;
     }
 
-    private Point2D.Double transformPointTo2D(double x, double y, double z, double d) {
+    private Point2DWrapper transformPointTo2D(double id, double x, double y, double z, double d) {
         double newX = (x * d)/(z + d);
         double newY = (y * d)/(z + d);
 
-        return new Point2D.Double(newX, newY);
+        return new Point2DWrapper(id, newX, newY);
     }
 
 }
