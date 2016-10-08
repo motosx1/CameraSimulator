@@ -16,19 +16,18 @@ public class Cuboid {
     private Map<Integer, Point2D> points2D = new HashMap<Integer, Point2D>();
     @Getter
     private List<LineWrapper> lines = new ArrayList<LineWrapper>();
-    @Getter
     private static final double INITIAL_VIEWER_DISTANCE = 600;
 
 
     public Cuboid(){
-        points3D.put( 0, new Point3D(300, 200, 100) );
-        points3D.put( 1, new Point3D(500, 200, 100) );
-        points3D.put( 2, new Point3D(500, 200, 300) );
-        points3D.put( 3, new Point3D(300, 200, 300) );
-        points3D.put( 4, new Point3D(300, 350, 100) );
-        points3D.put( 5, new Point3D(500, 350, 100) );
-        points3D.put( 6, new Point3D(500, 350, 300) );
-        points3D.put( 7, new Point3D(300, 350, 300) );
+        points3D.put( 0, new Point3D(300-70, 200-70, 100) );
+        points3D.put( 1, new Point3D(500-70, 200-70, 100) );
+        points3D.put( 2, new Point3D(500-70, 200-70, 300) );
+        points3D.put( 3, new Point3D(300-70, 200-70, 300) );
+        points3D.put( 4, new Point3D(300-70, 350-70, 100) );
+        points3D.put( 5, new Point3D(500-70, 350-70, 100) );
+        points3D.put( 6, new Point3D(500-70, 350-70, 300) );
+        points3D.put( 7, new Point3D(300-70, 350-70, 300) );
 
         points2D = getTransformedPointsTo2D();
         lines = getLinesWrapper();

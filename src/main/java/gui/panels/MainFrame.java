@@ -5,8 +5,8 @@ import java.awt.*;
 
 public class MainFrame extends JFrame{
 
-    private static final int FRAME_WIDTH = 1200;
-    private static final int FRAME_HEIGHT = 800;
+    public static final int FRAME_WIDTH = 1200;
+    public static final int FRAME_HEIGHT = 800;
 
     public MainFrame() {
         super("Camera Simulator v1");
