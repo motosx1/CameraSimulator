@@ -1,10 +1,17 @@
 package main;
 
-/**
- * Created by Bartosz on 06.10.2016.
- */
-public class Main {
-    public static void main(String[] args) {
+import gui.panels.MainFrame;
 
+import java.awt.*;
+
+public class Main  {
+    private Main(){}
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new MainFrame();
+            }
+        });
     }
 }
+
