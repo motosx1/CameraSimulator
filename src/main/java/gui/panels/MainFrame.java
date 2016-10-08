@@ -1,7 +1,7 @@
 package gui.panels;
 
-import gui.buttons.Buttons;
-import gui.buttons.MoveLeftButton;
+import gui.buttons.ActionButtons;
+import gui.buttons.TransformationButton;
 import structures.Cuboid;
 
 import javax.swing.*;
@@ -53,8 +53,8 @@ public class MainFrame extends JFrame{
     }
 
     private void addButtons(JPanel buttonsPanel) {
-        Buttons buttons = new Buttons(canvas, cuboid);
-        MoveLeftButton moveLeftButton = buttons.getMoveLeftButton();
+        ActionButtons actionButtons = new ActionButtons(canvas, cuboid);
+        TransformationButton moveLeftButton = actionButtons.getMoveLeftButton();
 
         JButton button2 = new JButton("Przycisk 2");
         JButton button3 = new JButton("Przycisk 3");
