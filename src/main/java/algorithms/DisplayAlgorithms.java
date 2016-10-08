@@ -5,7 +5,6 @@ import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.commons.math3.linear.RealMatrix;
 import structures.Point2D;
 import structures.Point3D;
-import structures.Vector3D;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +19,7 @@ public class DisplayAlgorithms {
         return new Point2D(newX, newY);
     }
 
-    public static Map<Integer, Point3D> translation(Map<Integer, Point3D> points, Vector3D v) {
+    public static Map<Integer, Point3D> translation(Map<Integer, Point3D> points, double[][] v) {
         Map<Integer, Point3D> newPoints = new HashMap<Integer, Point3D>();
 
         for (Map.Entry<Integer, Point3D> point : points.entrySet()) {
@@ -31,8 +30,8 @@ public class DisplayAlgorithms {
         return newPoints;
     }
 
-    private static Point3D translatePoint(Point3D point, Vector3D v) {
-        RealMatrix translationMatrix = convertToMatrix(v);
+    private static Point3D translatePoint(Point3D point, double[][] v) {
+        RealMatrix translationMatrix = MatrixUtils.createRealMatrix(v);
         RealMatrix oldPointMatrix = convertToMatrix(point);
 
         RealMatrix resultPointMatrix = translationMatrix.multiply(oldPointMatrix);
@@ -57,15 +56,4 @@ public class DisplayAlgorithms {
         return MatrixUtils.createRealMatrix(matrixData);
     }
 
-    private static RealMatrix convertToMatrix(Vector3D v) {
-        RealMatrix identity = MatrixUtils.createRealIdentityMatrix(4);
-        double[][] matrixData = identity.getData();
-
-        matrixData[0][3] = v.getTx();
-        matrixData[1][3] = v.getTy();
-        matrixData[2][3] = v.getTz();
-        matrixData[3][3] = 1;
-
-        return MatrixUtils.createRealMatrix(matrixData);
-    }
 }

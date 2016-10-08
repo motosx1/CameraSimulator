@@ -18,8 +18,6 @@ public class MainFrame extends JFrame{
 
     public MainFrame(Cuboid cuboid) {
         super("Camera Simulator v1");
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
         this.cuboid = cuboid;
         this.canvas = new CanvasPanel(cuboid);
 
@@ -45,8 +43,9 @@ public class MainFrame extends JFrame{
     }
 
     private void setUpFrame() {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
         setLocation(((int)screenSize.getWidth() - FRAME_WIDTH)/2,100);
         setLayout(new BorderLayout());

@@ -4,7 +4,6 @@ import algorithms.DisplayAlgorithms;
 import gui.panels.CanvasPanel;
 import structures.Cuboid;
 import structures.Point3D;
-import structures.Vector3D;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,10 +12,10 @@ import java.util.Map;
 
 public class TransformationButton extends JButton {
     transient Cuboid cuboid = null;
-    transient Vector3D vector = null;
+    transient double[][] vector = null;
     CanvasPanel canvas = null;
 
-    protected TransformationButton(CanvasPanel canvas, Cuboid cuboid, Vector3D vector, String title) {
+    protected TransformationButton(CanvasPanel canvas, Cuboid cuboid, double[][] vector, String title) {
         super(title);
         setAlignmentX(Component.CENTER_ALIGNMENT);
         addActionListener(new OnClickAction());

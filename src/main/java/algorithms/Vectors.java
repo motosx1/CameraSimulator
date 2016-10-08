@@ -1,13 +1,13 @@
 package algorithms;
 
-import structures.Vector3D;
-
+import lombok.Getter;
 
 public class Vectors {
-    public static final Vector3D TRANSLATION_LEFT = new Vector3D(4,0,0);
-    public static final Vector3D TRANSLATION_RIGHT = new Vector3D(-4,0,0);
-    public static final Vector3D TRANSLATION_UP = new Vector3D(0,4,0);
-    public static final Vector3D TRANSLATION_DOWN = new Vector3D(0,-4,0);
+    private static final int STEP = 4;
+    @Getter private static final double[][] translationLeft = {{1, 0, 0, STEP}, {0,1,0,0}, {0,0,1,0}, {0,0,0,1}};
+    @Getter private static final double[][] translationRight = {{1, 0, 0, -STEP}, {0,1,0,0}, {0,0,1,0}, {0,0,0,1}};
+    @Getter private static final double[][] translationUp = {{1, 0, 0, 0}, {0,1,0, STEP}, {0,0,1,0}, {0,0,0,1}};
+    @Getter private static final double[][] translationDown = {{1, 0, 0, 0}, {0,1,0,-STEP}, {0,0,1,0}, {0,0,0,1}};
 
     private Vectors(){}
 }

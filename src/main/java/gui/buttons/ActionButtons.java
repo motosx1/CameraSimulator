@@ -16,9 +16,9 @@ public class ActionButtons {
     TransformationButton moveDownButton = null;
 
     public ActionButtons(CanvasPanel canvas, Cuboid cuboid) {
-        this.moveLeftButton = new TransformationButton(canvas, cuboid, Vectors.TRANSLATION_LEFT, " LEFT ");
-        this.moveRightButton = new TransformationButton(canvas, cuboid, Vectors.TRANSLATION_RIGHT, " RIGHT ");
-        this.moveUpButton = new TransformationButton(canvas, cuboid, Vectors.TRANSLATION_UP, " UP ");
-        this.moveDownButton = new TransformationButton(canvas, cuboid, Vectors.TRANSLATION_DOWN, " DOWN ");
+        this.moveLeftButton = new TransformationButton(canvas, cuboid, Vectors.getTranslationLeft(), " LEFT ");
+        this.moveRightButton = new TransformationButton(canvas, cuboid, Vectors.getTranslationRight(), " RIGHT ");
+        this.moveUpButton = new TransformationButton(canvas, cuboid, Vectors.getTranslationUp(), " UP ");
+        this.moveDownButton = new TransformationButton(canvas, cuboid, Vectors.getTranslationDown(), " DOWN ");
     }
 }
