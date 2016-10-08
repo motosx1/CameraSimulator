@@ -55,15 +55,14 @@ public class MainFrame extends JFrame{
     private void addButtons(JPanel buttonsPanel) {
         ActionButtons actionButtons = new ActionButtons(canvas, cuboid);
         TransformationButton moveLeftButton = actionButtons.getMoveLeftButton();
-
-        JButton button2 = new JButton("Przycisk 2");
-        JButton button3 = new JButton("Przycisk 3");
-        button2.setAlignmentX(Component.CENTER_ALIGNMENT);
-        button3.setAlignmentX(Component.CENTER_ALIGNMENT);
+        TransformationButton moveRightButton = actionButtons.getMoveRightButton();
+        TransformationButton moveUpButton = actionButtons.getMoveUpButton();
+        TransformationButton moveDownButton = actionButtons.getMoveDownButton();
 
         buttonsPanel.add(moveLeftButton);
-        buttonsPanel.add(button2);
-        buttonsPanel.add(button3);
+        buttonsPanel.add(moveRightButton);
+        buttonsPanel.add(moveUpButton);
+        buttonsPanel.add(moveDownButton);
     }
 
     public static Dimension getCanvasPanelSize(){
