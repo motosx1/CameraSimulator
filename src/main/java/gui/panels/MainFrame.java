@@ -1,6 +1,7 @@
 package gui.panels;
 
 import gui.buttons.ActionButtons;
+import gui.buttons.ResetButton;
 import gui.buttons.TransformationButton;
 import structures.Cuboid;
 
@@ -33,9 +34,16 @@ public class MainFrame extends JFrame{
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setPreferredSize(new Dimension(BUTTONS_PANEL_WIDTH, (int)buttonsPanel.getPreferredSize().getHeight()));
         buttonsPanel.setLayout(new BoxLayout(buttonsPanel, BoxLayout.PAGE_AXIS));
-        addButtons(buttonsPanel);
 
+        addResetButton(buttonsPanel);
+        addButtons(buttonsPanel);
         add(buttonsPanel, BorderLayout.EAST);
+    }
+
+    private void addResetButton(JPanel buttonsPanel) {
+        ResetButton button = new ResetButton(cuboid, canvas);
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        buttonsPanel.add(button);
     }
 
     private void addCanvas() {
@@ -54,6 +62,7 @@ public class MainFrame extends JFrame{
     private void addButtons(JPanel buttonsPanel) {
         ActionButtons actionButtons = new ActionButtons(canvas, cuboid);
         for (TransformationButton button : actionButtons.getAllTransformationButtons()) {
+            button.setAlignmentX(Component.CENTER_ALIGNMENT);
             buttonsPanel.add(button);
         }
 

@@ -20,17 +20,22 @@ public class Cuboid {
 
 
     public Cuboid(){
-        points3D.put( 0, new Point3D(300-70, 200-70, 100) );
-        points3D.put( 1, new Point3D(500-70, 200-70, 100) );
-        points3D.put( 2, new Point3D(500-70, 200-70, 300) );
-        points3D.put( 3, new Point3D(300-70, 200-70, 300) );
-        points3D.put( 4, new Point3D(300-70, 350-70, 100) );
-        points3D.put( 5, new Point3D(500-70, 350-70, 100) );
-        points3D.put( 6, new Point3D(500-70, 350-70, 300) );
-        points3D.put( 7, new Point3D(300-70, 350-70, 300) );
-
+        points3D = getInitialPoints3D();
         points2D = getTransformedPointsTo2D();
         lines = getLinesWrapper();
+    }
+
+    private Map<Integer, Point3D> getInitialPoints3D() {
+        Map<Integer, Point3D> initialPoints = new HashMap<Integer, Point3D>();
+        initialPoints.put( 0, new Point3D(300-70, 200-70, 100) );
+        initialPoints.put( 1, new Point3D(500-70, 200-70, 100) );
+        initialPoints.put( 2, new Point3D(500-70, 200-70, 300) );
+        initialPoints.put( 3, new Point3D(300-70, 200-70, 300) );
+        initialPoints.put( 4, new Point3D(300-70, 350-70, 100) );
+        initialPoints.put( 5, new Point3D(500-70, 350-70, 100) );
+        initialPoints.put( 6, new Point3D(500-70, 350-70, 300) );
+        initialPoints.put( 7, new Point3D(300-70, 350-70, 300) );
+        return initialPoints;
     }
 
     private Map<Integer, Point2D> getTransformedPointsTo2D(){
@@ -69,5 +74,9 @@ public class Cuboid {
         this.points3D = points3D;
         points2D = getTransformedPointsTo2D();
         lines = getLinesWrapper();
+    }
+
+    public void resetPoints3D(){
+        setPoints3D(getInitialPoints3D());
     }
 }

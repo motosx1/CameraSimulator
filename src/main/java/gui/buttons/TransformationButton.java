@@ -26,7 +26,6 @@ public class TransformationButton extends JButton {
     }
 
     private class OnClickAction implements java.awt.event.ActionListener {
-
         public void actionPerformed(ActionEvent e) {
             Map<Integer, Point3D> points = cuboid.getPoints3D();
             Map<Integer, Point3D> translatedPoints = DisplayAlgorithms.translation(points, vector);
@@ -34,6 +33,5 @@ public class TransformationButton extends JButton {
             cuboid.setPoints3D(translatedPoints);
             canvas.repaint();
         }
-
     }
 }
