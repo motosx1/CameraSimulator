@@ -53,15 +53,10 @@ public class MainFrame extends JFrame{
 
     private void addButtons(JPanel buttonsPanel) {
         ActionButtons actionButtons = new ActionButtons(canvas, cuboid);
-        TransformationButton moveLeftButton = actionButtons.getMoveLeftButton();
-        TransformationButton moveRightButton = actionButtons.getMoveRightButton();
-        TransformationButton moveUpButton = actionButtons.getMoveUpButton();
-        TransformationButton moveDownButton = actionButtons.getMoveDownButton();
+        for (TransformationButton button : actionButtons.getAllTransformationButtons()) {
+            buttonsPanel.add(button);
+        }
 
-        buttonsPanel.add(moveLeftButton);
-        buttonsPanel.add(moveRightButton);
-        buttonsPanel.add(moveUpButton);
-        buttonsPanel.add(moveDownButton);
     }
 
     public static Dimension getCanvasPanelSize(){
