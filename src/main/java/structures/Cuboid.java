@@ -17,6 +17,7 @@ public class Cuboid {
     private Map<Integer, Point2D> points2D = new HashMap<Integer, Point2D>();
     @Getter
     private List<LineWrapper> lines = new ArrayList<LineWrapper>();
+    public static final Integer HORIZON_POINT = 8;
     private static final double INITIAL_VIEWER_DISTANCE = 600;
 
 
@@ -52,6 +53,7 @@ public class Cuboid {
         initialPoints.put( 5, new Point3D(x+width, y+height, z) );
         initialPoints.put( 6, new Point3D(x+width, y+height, z+depth) );
         initialPoints.put( 7, new Point3D(x, y+height, z+depth) );
+        initialPoints.put(HORIZON_POINT, new Point3D(0,0,-(Double.MAX_VALUE/1000000000)) );
         return initialPoints;
     }
 
