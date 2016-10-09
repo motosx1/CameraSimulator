@@ -10,6 +10,7 @@ import java.util.Map;
 
 public class Cuboid {
 
+    private InitialCuboidData initialData;
     @Getter
     private Map<Integer, Point3D> points3D = new HashMap<Integer, Point3D>();
     @Getter
@@ -20,6 +21,14 @@ public class Cuboid {
 
 
     public Cuboid(){
+        initialData = new InitialCuboidData(new Point3D(230, 130, 100), 150, 200, 200);
+        points3D = getInitialPoints3D();
+        points2D = getTransformedPointsTo2D();
+        lines = getLinesWrapper();
+    }
+
+    public Cuboid(InitialCuboidData initialData){
+        this.initialData = initialData;
         points3D = getInitialPoints3D();
         points2D = getTransformedPointsTo2D();
         lines = getLinesWrapper();
@@ -27,14 +36,22 @@ public class Cuboid {
 
     private Map<Integer, Point3D> getInitialPoints3D() {
         Map<Integer, Point3D> initialPoints = new HashMap<Integer, Point3D>();
-        initialPoints.put( 0, new Point3D(300-70, 200-70, 100) );
-        initialPoints.put( 1, new Point3D(500-70, 200-70, 100) );
-        initialPoints.put( 2, new Point3D(500-70, 200-70, 300) );
-        initialPoints.put( 3, new Point3D(300-70, 200-70, 300) );
-        initialPoints.put( 4, new Point3D(300-70, 350-70, 100) );
-        initialPoints.put( 5, new Point3D(500-70, 350-70, 100) );
-        initialPoints.put( 6, new Point3D(500-70, 350-70, 300) );
-        initialPoints.put( 7, new Point3D(300-70, 350-70, 300) );
+
+        double x = initialData.getInitPoint().getX();
+        double y = initialData.getInitPoint().getY();
+        double z = initialData.getInitPoint().getZ();
+        int width = initialData.getWidth();
+        int height = initialData.getHeight();
+        int depth = initialData.getDepth();
+
+        initialPoints.put( 0, new Point3D(x, y, z) );
+        initialPoints.put( 1, new Point3D(x+width, y, z) );
+        initialPoints.put( 2, new Point3D(x+width, y, z+depth) );
+        initialPoints.put( 3, new Point3D(x, y, z+depth) );
+        initialPoints.put( 4, new Point3D(x, y+height, z) );
+        initialPoints.put( 5, new Point3D(x+width, y+height, z) );
+        initialPoints.put( 6, new Point3D(x+width, y+height, z+depth) );
+        initialPoints.put( 7, new Point3D(x, y+height, z+depth) );
         return initialPoints;
     }
 
