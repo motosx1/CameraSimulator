@@ -7,15 +7,17 @@ import structures.Point2D;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class CanvasPanel extends JPanel {
 
-    transient Cuboid cuboid = null;
+    transient List<Cuboid> cuboids = new ArrayList<Cuboid>();
 
-    public CanvasPanel(Cuboid cuboid) {
+    public CanvasPanel(List<Cuboid> cuboids) {
         super();
-        this.cuboid = cuboid;
+        this.cuboids = cuboids;
         setBackground(Color.WHITE);
         repaint();
     }
@@ -27,14 +29,16 @@ public class CanvasPanel extends JPanel {
         setCanvasCenter(g2);
         markCanvasCenter(g2);
 
-        Map<Integer, Point2D> cuboidPoints = cuboid.getPoints2D();
-        for (Map.Entry<Integer, Point2D> point : cuboidPoints.entrySet()) {
-            g2.drawString(String.valueOf(point.getKey()), (int)point.getValue().getX()+3, (int)point.getValue().getY()-3);
-        }
+        for (Cuboid cuboid : cuboids) {
+            Map<Integer, Point2D> cuboidPoints = cuboid.getPoints2D();
+            for (Map.Entry<Integer, Point2D> point : cuboidPoints.entrySet()) {
+                g2.drawString(String.valueOf(point.getKey()), (int)point.getValue().getX()+3, (int)point.getValue().getY()-3);
+            }
 
-        java.util.List<LineWrapper> cuboidLines = cuboid.getLines();
-        for (LineWrapper line : cuboidLines) {
-            g2.drawLine((int)line.getStartPoint().getX(), (int)line.getStartPoint().getY(), (int)line.getEndPoint().getX(), (int)line.getEndPoint().getY());
+            java.util.List<LineWrapper> cuboidLines = cuboid.getLines();
+            for (LineWrapper line : cuboidLines) {
+                g2.drawLine((int)line.getStartPoint().getX(), (int)line.getStartPoint().getY(), (int)line.getEndPoint().getX(), (int)line.getEndPoint().getY());
+            }
         }
 
     }

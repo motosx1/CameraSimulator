@@ -7,6 +7,8 @@ import structures.Cuboid;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainFrame extends JFrame{
 
@@ -14,13 +16,13 @@ public class MainFrame extends JFrame{
     public static final int FRAME_HEIGHT = 800;
     public static final int BUTTONS_PANEL_WIDTH = 150;
 
-    transient Cuboid cuboid = null;
+    List<Cuboid> cuboids = new ArrayList<Cuboid>();
     CanvasPanel canvas = null;
 
-    public MainFrame(Cuboid cuboid) {
+    public MainFrame(List<Cuboid> cuboids) {
         super("Camera Simulator v1");
-        this.cuboid = cuboid;
-        this.canvas = new CanvasPanel(cuboid);
+        this.cuboids = cuboids;
+        this.canvas = new CanvasPanel(cuboids);
 
         setUpFrame();
         addCanvas();
@@ -41,7 +43,7 @@ public class MainFrame extends JFrame{
     }
 
     private void addResetButton(JPanel buttonsPanel) {
-        ResetButton button = new ResetButton(cuboid, canvas);
+        ResetButton button = new ResetButton(canvas, cuboids);
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         buttonsPanel.add(button);
     }
@@ -60,7 +62,7 @@ public class MainFrame extends JFrame{
     }
 
     private void addButtons(JPanel buttonsPanel) {
-        ActionButtons actionButtons = new ActionButtons(canvas, cuboid);
+        ActionButtons actionButtons = new ActionButtons(canvas, cuboids);
         for (TransformationButton button : actionButtons.getAllTransformationButtons()) {
             button.setAlignmentX(Component.CENTER_ALIGNMENT);
             buttonsPanel.add(button);

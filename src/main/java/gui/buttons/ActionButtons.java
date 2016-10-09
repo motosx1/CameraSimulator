@@ -21,17 +21,17 @@ public class ActionButtons {
     TransformationButton rotateZButton = null;
     TransformationButton rotateMinusZButton = null;
 
-    public ActionButtons(CanvasPanel canvas, Cuboid cuboid) {
-        this.moveLeftButton = new TransformationButton(canvas, cuboid, Vectors.getTranslationLeft(), " LEFT ");
-        this.moveRightButton = new TransformationButton(canvas, cuboid, Vectors.getTranslationRight(), " RIGHT ");
-        this.moveUpButton = new TransformationButton(canvas, cuboid, Vectors.getTranslationUp(), " UP ");
-        this.moveDownButton = new TransformationButton(canvas, cuboid, Vectors.getTranslationDown(), " DOWN ");
-        this.rotateXButton = new TransformationButton(canvas, cuboid, Vectors.getRotateX(), " ROTATE X ");
-        this.rotateMinusXButton = new TransformationButton(canvas, cuboid, Vectors.getRotateMinusX(), " ROTATE -X ");
-        this.rotateYButton = new TransformationButton(canvas, cuboid, Vectors.getRotateY(), " ROTATE Y ");
-        this.rotateMinusYButton = new TransformationButton(canvas, cuboid, Vectors.getRotateMinusY(), " ROTATE -Y ");
-        this.rotateZButton = new TransformationButton(canvas, cuboid, Vectors.getRotateZ(), " ROTATE Z ");
-        this.rotateMinusZButton = new TransformationButton(canvas, cuboid, Vectors.getRotateMinusZ(), " ROTATE -Z ");
+    public ActionButtons(CanvasPanel canvas, List<Cuboid> cuboids) {
+        this.moveLeftButton = new TransformationButton(canvas, cuboids, Vectors.getTranslationLeft(), " LEFT ");
+        this.moveRightButton = new TransformationButton(canvas, cuboids, Vectors.getTranslationRight(), " RIGHT ");
+        this.moveUpButton = new TransformationButton(canvas, cuboids, Vectors.getTranslationUp(), " UP ");
+        this.moveDownButton = new TransformationButton(canvas, cuboids, Vectors.getTranslationDown(), " DOWN ");
+        this.rotateXButton = new TransformationButton(canvas, cuboids, Vectors.getRotateX(), " ROTATE X ");
+        this.rotateMinusXButton = new TransformationButton(canvas, cuboids, Vectors.getRotateMinusX(), " ROTATE -X ");
+        this.rotateYButton = new TransformationButton(canvas, cuboids, Vectors.getRotateY(), " ROTATE Y ");
+        this.rotateMinusYButton = new TransformationButton(canvas, cuboids, Vectors.getRotateMinusY(), " ROTATE -Y ");
+        this.rotateZButton = new TransformationButton(canvas, cuboids, Vectors.getRotateZ(), " ROTATE Z ");
+        this.rotateMinusZButton = new TransformationButton(canvas, cuboids, Vectors.getRotateMinusZ(), " ROTATE -Z ");
     }
 
     public List<TransformationButton> getAllTransformationButtons(){

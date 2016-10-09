@@ -8,29 +8,33 @@ import structures.Point3D;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class TransformationButton extends JButton {
-    transient Cuboid cuboid = null;
+    transient List<Cuboid> cuboids = new ArrayList<Cuboid>();
     transient double[][] vector = null;
     CanvasPanel canvas = null;
 
-    protected TransformationButton(CanvasPanel canvas, Cuboid cuboid, double[][] vector, String title) {
+    protected TransformationButton(CanvasPanel canvas, java.util.List<Cuboid> cuboids, double[][] vector, String title) {
         super(title);
         setAlignmentX(Component.CENTER_ALIGNMENT);
         addActionListener(new OnClickAction());
 
-        this.cuboid = cuboid;
+        this.cuboids = cuboids;
         this.canvas = canvas;
         this.vector = vector;
     }
 
     private class OnClickAction implements java.awt.event.ActionListener {
         public void actionPerformed(ActionEvent e) {
-            Map<Integer, Point3D> points = cuboid.getPoints3D();
-            Map<Integer, Point3D> translatedPoints = DisplayAlgorithms.translation(points, vector);
+            for (Cuboid cuboid : cuboids) {
+                Map<Integer, Point3D> points = cuboid.getPoints3D();
+                Map<Integer, Point3D> translatedPoints = DisplayAlgorithms.translation(points, vector);
 
-            cuboid.setPoints3D(translatedPoints);
+                cuboid.setPoints3D(translatedPoints);
+            }
             canvas.repaint();
         }
     }
