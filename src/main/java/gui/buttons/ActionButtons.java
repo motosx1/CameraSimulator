@@ -16,6 +16,10 @@ public class ActionButtons {
     TransformationButton moveDownButton = null;
     TransformationButton rotateXButton = null;
     TransformationButton rotateMinusXButton = null;
+    TransformationButton rotateYButton = null;
+    TransformationButton rotateMinusYButton = null;
+    TransformationButton rotateZButton = null;
+    TransformationButton rotateMinusZButton = null;
 
     public ActionButtons(CanvasPanel canvas, Cuboid cuboid) {
         this.moveLeftButton = new TransformationButton(canvas, cuboid, Vectors.getTranslationLeft(), " LEFT ");
@@ -24,6 +28,10 @@ public class ActionButtons {
         this.moveDownButton = new TransformationButton(canvas, cuboid, Vectors.getTranslationDown(), " DOWN ");
         this.rotateXButton = new TransformationButton(canvas, cuboid, Vectors.getRotateX(), " ROTATE X ");
         this.rotateMinusXButton = new TransformationButton(canvas, cuboid, Vectors.getRotateMinusX(), " ROTATE -X ");
+        this.rotateYButton = new TransformationButton(canvas, cuboid, Vectors.getRotateY(), " ROTATE Y ");
+        this.rotateMinusYButton = new TransformationButton(canvas, cuboid, Vectors.getRotateMinusY(), " ROTATE -Y ");
+        this.rotateZButton = new TransformationButton(canvas, cuboid, Vectors.getRotateZ(), " ROTATE Z ");
+        this.rotateMinusZButton = new TransformationButton(canvas, cuboid, Vectors.getRotateMinusZ(), " ROTATE -Z ");
     }
 
     public List<TransformationButton> getAllTransformationButtons(){
@@ -33,6 +41,8 @@ public class ActionButtons {
         transformationButtons.add(moveDownButton);
         transformationButtons.add(rotateXButton);
         transformationButtons.add(rotateMinusXButton);
+        transformationButtons.add(rotateYButton);
+        transformationButtons.add(rotateMinusYButton);
 
         return transformationButtons;
     }
