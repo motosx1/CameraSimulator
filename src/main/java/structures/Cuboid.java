@@ -16,23 +16,20 @@ public class Cuboid {
     @Getter
     private Map<Integer, Point2D> points2D = new HashMap<Integer, Point2D>();
     @Getter
-    private List<LineWrapper> lines = new ArrayList<LineWrapper>();
-    public static final Integer HORIZON_POINT = 8;
     private static final double INITIAL_VIEWER_DISTANCE = 600;
+    public static final Integer HORIZON_POINT = 8;
 
 
     public Cuboid(){
-        initialData = new InitialCuboidData(new Point3D(230, 130, 100), 150, 200, 200);
+        initialData = new InitialCuboidData(new Point3D(-230, -130, -100), 150, 200, 200);
         points3D = getInitialPoints3D();
         points2D = getTransformedPointsTo2D();
-        lines = getLinesWrapper();
     }
 
     public Cuboid(InitialCuboidData initialData){
         this.initialData = initialData;
         points3D = getInitialPoints3D();
         points2D = getTransformedPointsTo2D();
-        lines = getLinesWrapper();
     }
 
     private Map<Integer, Point3D> getInitialPoints3D() {
@@ -92,10 +89,13 @@ public class Cuboid {
     public void setPoints3D(Map<Integer, Point3D> points3D) {
         this.points3D = points3D;
         points2D = getTransformedPointsTo2D();
-        lines = getLinesWrapper();
     }
 
-    public void resetPoints3D(){
+    public List<LineWrapper> getLines() {
+        return getLinesWrapper();
+    }
+
+    public void reset(){
         setPoints3D(getInitialPoints3D());
     }
 }

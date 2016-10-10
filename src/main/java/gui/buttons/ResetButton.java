@@ -24,7 +24,7 @@ public class ResetButton extends JButton{
     private class OnClickAction implements java.awt.event.ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (Cuboid cuboid : cuboids) {
-                cuboid.resetPoints3D();
+                cuboid.reset();
             }
             canvas.repaint();
         }

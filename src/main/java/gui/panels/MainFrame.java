@@ -2,7 +2,7 @@ package gui.panels;
 
 import gui.buttons.ActionButtons;
 import gui.buttons.ResetButton;
-import gui.buttons.TransformationButton;
+import gui.buttons.Button;
 import structures.Cuboid;
 
 import javax.swing.*;
@@ -16,7 +16,7 @@ public class MainFrame extends JFrame{
     public static final int FRAME_HEIGHT = 800;
     public static final int BUTTONS_PANEL_WIDTH = 150;
 
-    List<Cuboid> cuboids = new ArrayList<Cuboid>();
+    transient List<Cuboid> cuboids = new ArrayList<Cuboid>();
     CanvasPanel canvas = null;
 
     public MainFrame(List<Cuboid> cuboids) {
@@ -63,7 +63,7 @@ public class MainFrame extends JFrame{
 
     private void addButtons(JPanel buttonsPanel) {
         ActionButtons actionButtons = new ActionButtons(canvas, cuboids);
-        for (TransformationButton button : actionButtons.getAllTransformationButtons()) {
+        for (Button button : actionButtons.getAllTransformationButtons()) {
             button.setAlignmentX(Component.CENTER_ALIGNMENT);
             buttonsPanel.add(button);
         }

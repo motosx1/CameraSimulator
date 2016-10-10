@@ -9,6 +9,8 @@ public class Vectors {
     @Getter private static final double[][] translationRight = {{1, 0, 0, -STEP}, {0,1,0,0}, {0,0,1,0}, {0,0,0,1}};
     @Getter private static final double[][] translationUp = {{1, 0, 0, 0}, {0,1,0, STEP}, {0,0,1,0}, {0,0,0,1}};
     @Getter private static final double[][] translationDown = {{1, 0, 0, 0}, {0,1,0,-STEP}, {0,0,1,0}, {0,0,0,1}};
+    @Getter private static final double[][] translationForward = {{1, 0, 0, 0}, {0,1,0,0}, {0,0,1, -STEP}, {0,0,0,1}};
+    @Getter private static final double[][] translationBackward = {{1, 0, 0, 0}, {0,1,0,0}, {0,0,1, STEP}, {0,0,0,1}};
 
     @Getter
     private static final double[][] rotateX = {

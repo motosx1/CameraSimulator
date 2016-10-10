@@ -5,19 +5,18 @@ import gui.panels.CanvasPanel;
 import structures.Cuboid;
 import structures.Point3D;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class TransformationButton extends JButton {
+public class VectorTransformationButton extends Button{
     transient List<Cuboid> cuboids = new ArrayList<Cuboid>();
     transient double[][] vector = null;
     CanvasPanel canvas = null;
 
-    protected TransformationButton(CanvasPanel canvas, java.util.List<Cuboid> cuboids, double[][] vector, String title) {
+    protected VectorTransformationButton(CanvasPanel canvas, java.util.List<Cuboid> cuboids, double[][] vector, String title) {
         super(title);
         setAlignmentX(Component.CENTER_ALIGNMENT);
         addActionListener(new OnClickAction());
