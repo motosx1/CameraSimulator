@@ -47,6 +47,8 @@ public class ActionButtons {
         transformationButtons.add(rotateMinusXButton);
         transformationButtons.add(rotateYButton);
         transformationButtons.add(rotateMinusYButton);
+        transformationButtons.add(rotateZButton);
+        transformationButtons.add(rotateMinusZButton);
         transformationButtons.add(moveForward);
         transformationButtons.add(moveBackward);
 
