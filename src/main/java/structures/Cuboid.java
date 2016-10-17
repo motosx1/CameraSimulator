@@ -15,8 +15,9 @@ public class Cuboid {
     private Map<Integer, Point3D> points3D = new HashMap<Integer, Point3D>();
     @Getter
     private Map<Integer, Point2D> points2D = new HashMap<Integer, Point2D>();
+    private static final int INITIAL_VIEWER_DISTANCE = 600;
     @Getter
-    private static final double INITIAL_VIEWER_DISTANCE = 600;
+    private double viewerDistance = INITIAL_VIEWER_DISTANCE;
     public static final Integer HORIZON_POINT = 8;
 
 
@@ -59,7 +60,7 @@ public class Cuboid {
 
         for (Map.Entry<Integer, Point3D> cuboidPoint : points3D.entrySet()){
             Integer id = cuboidPoint.getKey();
-            Point2D transformedPoint = DisplayAlgorithms.transformPointTo2D(cuboidPoint.getValue(), INITIAL_VIEWER_DISTANCE);
+            Point2D transformedPoint = DisplayAlgorithms.transformPointTo2D(cuboidPoint.getValue(), viewerDistance);
 
             transformedPoints.put(id, transformedPoint);
         }
@@ -91,11 +92,17 @@ public class Cuboid {
         points2D = getTransformedPointsTo2D();
     }
 
+    public void setViewerDistance(double viewerDistance){
+        this.viewerDistance = viewerDistance;
+        points2D = getTransformedPointsTo2D();
+    }
+
     public List<LineWrapper> getLines() {
         return getLinesWrapper();
     }
 
     public void reset(){
+        this.viewerDistance = INITIAL_VIEWER_DISTANCE;
         setPoints3D(getInitialPoints3D());
     }
 }

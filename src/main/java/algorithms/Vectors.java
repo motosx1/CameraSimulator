@@ -54,6 +54,10 @@ public class Vectors {
             {0,0,1,0},
             {0,0,0,1}
     };
+    @Getter
+    private static final double zoomInStep = 20;
+    @Getter
+    private static final double zoomOutStep = -20;
 
     private Vectors(){}
 }

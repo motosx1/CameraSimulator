@@ -8,20 +8,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ActionButtons {
-    ArrayList<Button> transformationButtons = new ArrayList<Button>();
+    private ArrayList<Button> transformationButtons = new ArrayList<Button>();
 
-    VectorTransformationButton moveLeftButton = null;
-    VectorTransformationButton moveRightButton = null;
-    VectorTransformationButton moveUpButton = null;
-    VectorTransformationButton moveDownButton = null;
-    VectorTransformationButton rotateXButton = null;
-    VectorTransformationButton rotateMinusXButton = null;
-    VectorTransformationButton rotateYButton = null;
-    VectorTransformationButton rotateMinusYButton = null;
-    VectorTransformationButton rotateZButton = null;
-    VectorTransformationButton rotateMinusZButton = null;
-    VectorTransformationButton moveForward = null;
-    VectorTransformationButton moveBackward = null;
+    private VectorTransformationButton moveLeftButton = null;
+    private VectorTransformationButton moveRightButton = null;
+    private VectorTransformationButton moveUpButton = null;
+    private VectorTransformationButton moveDownButton = null;
+    private VectorTransformationButton rotateXButton = null;
+    private VectorTransformationButton rotateMinusXButton = null;
+    private VectorTransformationButton rotateYButton = null;
+    private VectorTransformationButton rotateMinusYButton = null;
+    private VectorTransformationButton rotateZButton = null;
+    private VectorTransformationButton rotateMinusZButton = null;
+    private VectorTransformationButton moveForward = null;
+    private VectorTransformationButton moveBackward = null;
+    private ViewerDistanceButton zoomIn = null;
+    private ViewerDistanceButton zoomOut = null;
 
     public ActionButtons(CanvasPanel canvas, List<Cuboid> cuboids) {
         this.moveLeftButton = new VectorTransformationButton(canvas, cuboids, Vectors.getTranslationLeft(), " LEFT ");
@@ -36,6 +38,8 @@ public class ActionButtons {
         this.rotateMinusZButton = new VectorTransformationButton(canvas, cuboids, Vectors.getRotateMinusZ(), " ROTATE -Z ");
         this.moveForward = new VectorTransformationButton(canvas, cuboids, Vectors.getTranslationForward(), " FORWARD ");
         this.moveBackward = new VectorTransformationButton(canvas, cuboids, Vectors.getTranslationBackward(), " BACKWARD ");
+        this.zoomIn = new ViewerDistanceButton(canvas, cuboids, Vectors.getZoomInStep(), " ZOOM IN ");
+        this.zoomOut = new ViewerDistanceButton(canvas, cuboids, Vectors.getZoomOutStep(), " ZOOM OUT ");
     }
 
     public List<Button> getAllTransformationButtons(){
@@ -51,6 +55,8 @@ public class ActionButtons {
         transformationButtons.add(rotateMinusZButton);
         transformationButtons.add(moveForward);
         transformationButtons.add(moveBackward);
+        transformationButtons.add(zoomIn);
+        transformationButtons.add(zoomOut);
 
         return transformationButtons;
     }
