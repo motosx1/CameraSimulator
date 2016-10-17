@@ -13,8 +13,8 @@ public class DisplayAlgorithms {
     private DisplayAlgorithms(){}
 
     public static Point2D transformPointTo2D(Point3D point, double viewerDistance) {
-        double newX = (point.getX() * viewerDistance)/(point.getZ() + viewerDistance);
-        double newY = (point.getY() * viewerDistance)/(point.getZ() + viewerDistance);
+        double newX = (point.getX() * viewerDistance)/point.getZ();
+        double newY = (point.getY() * viewerDistance)/point.getZ();
 
         return new Point2D(newX, newY);
     }

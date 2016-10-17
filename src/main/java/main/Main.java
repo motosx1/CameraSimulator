@@ -21,11 +21,11 @@ public class Main  {
     }
 
     private static ArrayList<Cuboid> generateCuboids() {
-        final Cuboid cuboid1 = new Cuboid(new InitialCuboidData(new Point3D(200, 130, 100), 150, 200, 200));
-        final Cuboid cuboid2 = new Cuboid(new InitialCuboidData(new Point3D(200, 130, 450), 150, 200, 200));
+        final Cuboid cuboid1 = new Cuboid(new InitialCuboidData(new Point3D(150, 80, 400), 75, 100, 100));
+        final Cuboid cuboid2 = new Cuboid(new InitialCuboidData(new Point3D(150, 80, 700), 75, 100, 100));
 
-        final Cuboid cuboid3 = new Cuboid(new InitialCuboidData(new Point3D(-400, 130, 100), 150, 200, 200));
-        final Cuboid cuboid4 = new Cuboid(new InitialCuboidData(new Point3D(-400, 130, 450), 150, 200, 200));
+        final Cuboid cuboid3 = new Cuboid(new InitialCuboidData(new Point3D(-250, 80, 400), 75, 100, 100));
+        final Cuboid cuboid4 = new Cuboid(new InitialCuboidData(new Point3D(-250, 80, 700), 75, 100, 100));
 
         final ArrayList<Cuboid> cuboids = new ArrayList<Cuboid>();
         cuboids.add(cuboid1);
