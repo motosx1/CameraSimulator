@@ -46,8 +46,26 @@ public class CanvasPanel extends JPanel {
 
         List<LineWrapper> cuboidLines = cuboid.getLines();
         for (LineWrapper line : cuboidLines) {
-            g2.drawLine((int)line.getStartPoint().getX(), (int)line.getStartPoint().getY(), (int)line.getEndPoint().getX(), (int)line.getEndPoint().getY());
+            if( isLineVisible(line) ) {
+                g2.drawLine((int) line.getStartPoint().getX(), (int) line.getStartPoint().getY(), (int) line.getEndPoint().getX(), (int) line.getEndPoint().getY());
+            }
         }
+    }
+
+    private boolean isLineVisible(LineWrapper line) {
+
+        Point2D startPoint = line.getStartPoint();
+        Point2D endPoint = line.getEndPoint();
+
+        if( Math.abs(startPoint.getX() -  endPoint.getX()) > getSize().getWidth()*4 ){
+            return false;
+        }
+        if( Math.abs(startPoint.getY() -  endPoint.getY()) > getSize().getHeight()*4 ){
+            return false;
+        }
+
+        return true;
+
     }
 
     private void setCanvasCenter(Graphics2D g2) {

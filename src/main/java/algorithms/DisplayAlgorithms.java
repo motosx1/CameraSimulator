@@ -11,12 +11,30 @@ import java.util.Map;
 
 public class DisplayAlgorithms {
     private DisplayAlgorithms(){}
+    private static final Double BIG_VAL = Double.MAX_VALUE / 1000000000;
+
 
     public static Point2D transformPointTo2D(Point3D point, double viewerDistance) {
-        double newX = (point.getX() * viewerDistance)/point.getZ();
-        double newY = (point.getY() * viewerDistance)/point.getZ();
+        Double newX = (point.getX() * viewerDistance)/point.getZ();
+        Double newY = (point.getY() * viewerDistance)/point.getZ();
 
-        return new Point2D(newX, newY);
+        if( Math.abs(point.getX() - newX) > 800 || Math.abs(point.getY() - newY) > 800){
+            return new Point2D(BIG_VAL, BIG_VAL);
+        }
+
+        return validatePoint(newX, newY);
+
+    }
+
+    private static Point2D validatePoint(Double x, Double y) {
+        if( Double.isNaN(x) || Double.isNaN(y)){
+            return new Point2D(0, 0);
+        }
+        if( Double.isInfinite(x) || Double.isInfinite(y) ){
+            return new Point2D(BIG_VAL, BIG_VAL);
+        }
+
+        return new Point2D(x,y);
     }
 
     public static Map<Integer, Point3D> translation(Map<Integer, Point3D> points, double[][] v) {
