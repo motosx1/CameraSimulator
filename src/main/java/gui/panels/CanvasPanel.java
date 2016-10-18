@@ -8,7 +8,6 @@ import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class CanvasPanel extends JPanel {
 
@@ -38,11 +37,6 @@ public class CanvasPanel extends JPanel {
     }
 
     private void drawCuboid(Graphics2D g2, Cuboid cuboid) {
-        Map<Integer, Point2D> cuboidPoints = cuboid.getPoints2D();
-//        for (Map.Entry<Integer, Point2D> point : cuboidPoints.entrySet()) {
-//            g2.drawString(String.valueOf(point.getKey()), (int)point.getValue().getX()+3, (int)point.getValue().getY()-3);
-//        }
-
         List<Line3DWrapper> cuboidLines = cuboid.getLines3D();
         for (Line3DWrapper line : cuboidLines) {
             if( isLineVisible(line) ) {
@@ -53,12 +47,10 @@ public class CanvasPanel extends JPanel {
     }
 
     private boolean isLineVisible(Line3DWrapper line) {
-
         Point3D startPoint = line.getStartPoint();
         Point3D endPoint = line.getEndPoint();
 
         return startPoint.getZ() > 0 && endPoint.getZ() > 0;
-
     }
 
     private void setCanvasCenter(Graphics2D g2) {
@@ -71,7 +63,5 @@ public class CanvasPanel extends JPanel {
         Point2D horizonPoint = cuboid.getPoints2D().get(Cuboid.HORIZON_POINT);
         g2.fillOval((int)horizonPoint.getX()-3,(int)horizonPoint.getY()-3,6,6);
     }
-
-
 
 }
