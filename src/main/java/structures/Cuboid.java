@@ -69,21 +69,21 @@ public class Cuboid {
     }
 
 
-    private List<LineWrapper> getLinesWrapper(){
-        ArrayList<LineWrapper> tmpLines = new ArrayList<LineWrapper>();
+    private List<Line2DWrapper> getLinesWrapper(){
+        ArrayList<Line2DWrapper> tmpLines = new ArrayList<Line2DWrapper>();
 
-        tmpLines.add(new LineWrapper(points2D.get(0), points2D.get(1)));
-        tmpLines.add(new LineWrapper(points2D.get(0), points2D.get(3)));
-        tmpLines.add(new LineWrapper(points2D.get(0), points2D.get(4)));
-        tmpLines.add(new LineWrapper(points2D.get(4), points2D.get(5)));
-        tmpLines.add(new LineWrapper(points2D.get(4), points2D.get(7)));
-        tmpLines.add(new LineWrapper(points2D.get(1), points2D.get(5)));
-        tmpLines.add(new LineWrapper(points2D.get(7), points2D.get(3)));
-        tmpLines.add(new LineWrapper(points2D.get(7), points2D.get(6)));
-        tmpLines.add(new LineWrapper(points2D.get(6), points2D.get(5)));
-        tmpLines.add(new LineWrapper(points2D.get(3), points2D.get(2)));
-        tmpLines.add(new LineWrapper(points2D.get(2), points2D.get(1)));
-        tmpLines.add(new LineWrapper(points2D.get(6), points2D.get(2)));
+        tmpLines.add(new Line2DWrapper(points2D.get(0), points2D.get(1)));
+        tmpLines.add(new Line2DWrapper(points2D.get(0), points2D.get(3)));
+        tmpLines.add(new Line2DWrapper(points2D.get(0), points2D.get(4)));
+        tmpLines.add(new Line2DWrapper(points2D.get(4), points2D.get(5)));
+        tmpLines.add(new Line2DWrapper(points2D.get(4), points2D.get(7)));
+        tmpLines.add(new Line2DWrapper(points2D.get(1), points2D.get(5)));
+        tmpLines.add(new Line2DWrapper(points2D.get(7), points2D.get(3)));
+        tmpLines.add(new Line2DWrapper(points2D.get(7), points2D.get(6)));
+        tmpLines.add(new Line2DWrapper(points2D.get(6), points2D.get(5)));
+        tmpLines.add(new Line2DWrapper(points2D.get(3), points2D.get(2)));
+        tmpLines.add(new Line2DWrapper(points2D.get(2), points2D.get(1)));
+        tmpLines.add(new Line2DWrapper(points2D.get(6), points2D.get(2)));
 
         return tmpLines;
     }
@@ -117,7 +117,7 @@ public class Cuboid {
         points2D = getTransformedPointsTo2D();
     }
 
-    public List<LineWrapper> getLines() {
+    public List<Line2DWrapper> getLines() {
         return getLinesWrapper();
     }
 

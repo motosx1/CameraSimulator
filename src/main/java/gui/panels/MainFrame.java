@@ -18,7 +18,7 @@ public class MainFrame extends JFrame{
     public static final int FRAME_WIDTH = 1200;
     public static final int FRAME_HEIGHT = 800;
     public static final int BUTTONS_PANEL_WIDTH = 150;
-    ActionButtons actionButtons = null;
+    transient ActionButtons actionButtons = null;
 
     transient List<Cuboid> cuboids = new ArrayList<Cuboid>();
     CanvasPanel canvas = null;
@@ -61,7 +61,7 @@ public class MainFrame extends JFrame{
     }
 
     private void addButtons(JPanel buttonsPanel) {
-        for (Map.Entry<String, Button> buttonMap : actionButtons.getAllTransformationButtons().entrySet()) {
+        for (Map.Entry<Dict, Button> buttonMap : actionButtons.getAllTransformationButtons().entrySet()) {
             Button button = buttonMap.getValue();
             button.setAlignmentX(Component.CENTER_ALIGNMENT);
             buttonsPanel.add(button);
@@ -130,7 +130,7 @@ public class MainFrame extends JFrame{
         }
     }
 
-    private void clickButton(String action) {
+    private void clickButton(Dict action) {
         actionButtons.getAllTransformationButtons().get(action).doClick();
     }
 }

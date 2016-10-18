@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ActionButtons {
-    private Map<String, Button> transformationButtons = new LinkedHashMap<String, Button>();
+    private Map<Dict, Button> transformationButtons = new LinkedHashMap<Dict, Button>();
 
     private ResetButton resetButton = null;
     private VectorTransformationButton moveLeftButton = null;
@@ -46,7 +46,7 @@ public class ActionButtons {
         this.zoomOut = new ViewerDistanceButton(canvas, cuboids, Vectors.getZoomOutStep(), " (E) ZOOM OUT ");
     }
 
-    public Map<String, Button> getAllTransformationButtons(){
+    public Map<Dict, Button> getAllTransformationButtons(){
         transformationButtons.put(Dict.RESET, resetButton);
         transformationButtons.put(Dict.MOVE_LEFT, moveLeftButton);
         transformationButtons.put(Dict.MOVE_RIGHT, moveRightButton);

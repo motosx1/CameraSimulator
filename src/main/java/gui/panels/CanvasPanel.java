@@ -40,7 +40,7 @@ public class CanvasPanel extends JPanel {
         List<Line3DWrapper> cuboidLines = cuboid.getLines3D();
         for (Line3DWrapper line : cuboidLines) {
             if( isLineVisible(line) ) {
-                LineWrapper line2D = DisplayAlgorithms.get2DLine(line, cuboid.getViewerDistance());
+                Line2DWrapper line2D = DisplayAlgorithms.get2DLine(line, cuboid.getViewerDistance());
                 g2.drawLine((int) line2D.getStartPoint().getX(), (int) line2D.getStartPoint().getY(), (int) line2D.getEndPoint().getX(), (int) line2D.getEndPoint().getY());
             }
         }
