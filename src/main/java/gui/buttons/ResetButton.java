@@ -3,17 +3,16 @@ package gui.buttons;
 import gui.panels.CanvasPanel;
 import structures.Cuboid;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.util.List;
 
-public class ResetButton extends JButton{
+public class ResetButton extends Button{
     transient List<Cuboid> cuboids;
     CanvasPanel canvas = null;
 
 
     public ResetButton(CanvasPanel canvas, java.util.List<Cuboid> cuboids) {
-        super(" RESET ");
+        super(" (R) RESET ");
 
         this.canvas = canvas;
         this.cuboids = cuboids;

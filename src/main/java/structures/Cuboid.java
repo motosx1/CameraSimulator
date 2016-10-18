@@ -68,6 +68,7 @@ public class Cuboid {
         return transformedPoints;
     }
 
+
     private List<LineWrapper> getLinesWrapper(){
         ArrayList<LineWrapper> tmpLines = new ArrayList<LineWrapper>();
 
@@ -83,6 +84,25 @@ public class Cuboid {
         tmpLines.add(new LineWrapper(points2D.get(3), points2D.get(2)));
         tmpLines.add(new LineWrapper(points2D.get(2), points2D.get(1)));
         tmpLines.add(new LineWrapper(points2D.get(6), points2D.get(2)));
+
+        return tmpLines;
+    }
+
+    public List<Line3DWrapper> getLines3D(){
+        ArrayList<Line3DWrapper> tmpLines = new ArrayList<Line3DWrapper>();
+
+        tmpLines.add(new Line3DWrapper(points3D.get(0), points3D.get(1)));
+        tmpLines.add(new Line3DWrapper(points3D.get(0), points3D.get(3)));
+        tmpLines.add(new Line3DWrapper(points3D.get(0), points3D.get(4)));
+        tmpLines.add(new Line3DWrapper(points3D.get(4), points3D.get(5)));
+        tmpLines.add(new Line3DWrapper(points3D.get(4), points3D.get(7)));
+        tmpLines.add(new Line3DWrapper(points3D.get(1), points3D.get(5)));
+        tmpLines.add(new Line3DWrapper(points3D.get(7), points3D.get(3)));
+        tmpLines.add(new Line3DWrapper(points3D.get(7), points3D.get(6)));
+        tmpLines.add(new Line3DWrapper(points3D.get(6), points3D.get(5)));
+        tmpLines.add(new Line3DWrapper(points3D.get(3), points3D.get(2)));
+        tmpLines.add(new Line3DWrapper(points3D.get(2), points3D.get(1)));
+        tmpLines.add(new Line3DWrapper(points3D.get(6), points3D.get(2)));
 
         return tmpLines;
     }

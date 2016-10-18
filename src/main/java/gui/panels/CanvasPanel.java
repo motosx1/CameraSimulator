@@ -1,8 +1,7 @@
 package gui.panels;
 
-import structures.Cuboid;
-import structures.LineWrapper;
-import structures.Point2D;
+import algorithms.DisplayAlgorithms;
+import structures.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,31 +39,25 @@ public class CanvasPanel extends JPanel {
 
     private void drawCuboid(Graphics2D g2, Cuboid cuboid) {
         Map<Integer, Point2D> cuboidPoints = cuboid.getPoints2D();
-        for (Map.Entry<Integer, Point2D> point : cuboidPoints.entrySet()) {
-            g2.drawString(String.valueOf(point.getKey()), (int)point.getValue().getX()+3, (int)point.getValue().getY()-3);
-        }
+//        for (Map.Entry<Integer, Point2D> point : cuboidPoints.entrySet()) {
+//            g2.drawString(String.valueOf(point.getKey()), (int)point.getValue().getX()+3, (int)point.getValue().getY()-3);
+//        }
 
-        List<LineWrapper> cuboidLines = cuboid.getLines();
-        for (LineWrapper line : cuboidLines) {
+        List<Line3DWrapper> cuboidLines = cuboid.getLines3D();
+        for (Line3DWrapper line : cuboidLines) {
             if( isLineVisible(line) ) {
-                g2.drawLine((int) line.getStartPoint().getX(), (int) line.getStartPoint().getY(), (int) line.getEndPoint().getX(), (int) line.getEndPoint().getY());
+                LineWrapper line2D = DisplayAlgorithms.get2DLine(line, cuboid.getViewerDistance());
+                g2.drawLine((int) line2D.getStartPoint().getX(), (int) line2D.getStartPoint().getY(), (int) line2D.getEndPoint().getX(), (int) line2D.getEndPoint().getY());
             }
         }
     }
 
-    private boolean isLineVisible(LineWrapper line) {
+    private boolean isLineVisible(Line3DWrapper line) {
 
-        Point2D startPoint = line.getStartPoint();
-        Point2D endPoint = line.getEndPoint();
+        Point3D startPoint = line.getStartPoint();
+        Point3D endPoint = line.getEndPoint();
 
-        if( Math.abs(startPoint.getX() -  endPoint.getX()) > getSize().getWidth()*4 ){
-            return false;
-        }
-        if( Math.abs(startPoint.getY() -  endPoint.getY()) > getSize().getHeight()*4 ){
-            return false;
-        }
-
-        return true;
+        return startPoint.getZ() > 0 && endPoint.getZ() > 0;
 
     }
 
@@ -78,5 +71,7 @@ public class CanvasPanel extends JPanel {
         Point2D horizonPoint = cuboid.getPoints2D().get(Cuboid.HORIZON_POINT);
         g2.fillOval((int)horizonPoint.getX()-3,(int)horizonPoint.getY()-3,6,6);
     }
+
+
 
 }

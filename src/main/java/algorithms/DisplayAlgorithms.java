@@ -3,6 +3,8 @@ package algorithms;
 
 import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.commons.math3.linear.RealMatrix;
+import structures.Line3DWrapper;
+import structures.LineWrapper;
 import structures.Point2D;
 import structures.Point3D;
 
@@ -18,9 +20,9 @@ public class DisplayAlgorithms {
         Double newX = (point.getX() * viewerDistance)/point.getZ();
         Double newY = (point.getY() * viewerDistance)/point.getZ();
 
-        if( Math.abs(point.getX() - newX) > 800 || Math.abs(point.getY() - newY) > 800){
-            return new Point2D(BIG_VAL, BIG_VAL);
-        }
+//        if( Math.abs(point.getX() - newX) > 800 || Math.abs(point.getY() - newY) > 800){
+//            return new Point2D(BIG_VAL, BIG_VAL);
+//        }
 
         return validatePoint(newX, newY);
 
@@ -74,4 +76,11 @@ public class DisplayAlgorithms {
         return MatrixUtils.createRealMatrix(matrixData);
     }
 
+    public static LineWrapper get2DLine(Line3DWrapper line, double viewerDistance) {
+        Point2D startPoint = transformPointTo2D(line.getStartPoint(), viewerDistance);
+        Point2D endPoint = transformPointTo2D(line.getEndPoint(), viewerDistance);
+
+        return new LineWrapper(startPoint, endPoint);
+
+    }
 }
